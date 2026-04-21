@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>傳承的智慧：帶您了解家族稅務與法律風險</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+ivory: '#FAF8F5',
+beige: '#F0EBE1',
+navy: '#2C3E50',
+gold: '#B8905B',
+warmgray: '#8C857B'
+},
+fontFamily: {
+sans: ['"Noto Sans TC"', '"PingFang TC"', '"Microsoft JhengHei"', 'sans-serif'],
+serif: ['"Noto Serif TC"', '"PMingLiU"', 'serif'],
+}
+}
+}
+}
+</script>
+<style>
+body {
+background-color: #FAF8F5;
+color: #2C3E50;
+-webkit-font-smoothing: antialiased;
+}
+.chart-container {
+position: relative;
+width: 100%;
+max-width: 700px;
+margin-left: auto;
+margin-right: auto;
+height: 60vh;
+min-height: 300px;
+max-height: 400px;
+}
+.blueprint-bg {
+background-image: 
+linear-gradient(rgba(184, 144, 91, 0.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(184, 144, 91, 0.05) 1px, transparent 1px);
+background-size: 20px 20px;
+}
+.fade-in {
+opacity: 0;
+transform: translateY(10px);
+transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in.visible {
+opacity: 1;
+transform: translateY(0);
+}
+.interactive-card {
+transition: all 0.3s ease;
+}
+.interactive-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+border-color: #B8905B;
+}
+</style>
+</head>
+<body class="blueprint-bg">
+
+<!-- Chosen Palette: Warm Ivory (#FAF8F5), Beige (#F0EBE1), Deep Navy (#2C3E50), Elegant Gold (#B8905B), Warm Gray (#8C857B) -->
+<!-- Application Structure Plan: A single-page interactive experience mirroring the book's narrative flow. It starts with an emotional and professional Hero section establishing the book's core value. It moves into an interactive "Pain Points" section to resonate with the user's practical dilemmas. Next, a Data Visualization section uses a chart to rationally demonstrate the cost of not planning. Then, an Interactive Checklist provides a tangible tool (reflecting the book's features) to engage the user. Finally, it outlines the book's highlights and target audience, ending with a call to action. This structure guides the user from emotional connection to logical understanding to active participation. -->
+<!-- Visualization & Content Choices: 1. Line Chart (Chart.js): Shows simulated wealth retention across 3 generations (Planned vs Unplanned) to visually quantify the "legal/tax risk". 2. Interactive Dilemma Cards (Vanilla JS): Allows users to click to reveal solutions to common inheritance questions, encouraging exploration. 3. Interactive Checklist (Vanilla JS): A functional self-assessment tool calculating a readiness score, demonstrating the book's practical value. NO SVG or Mermaid used; layout relies on Tailwind CSS, HTML shapes, and Unicode symbols. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+<nav class="fixed w-full bg-ivory/90 backdrop-blur-sm z-50 border-b border-beige">
+<div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+<div class="text-xl font-serif text-navy font-bold tracking-wider">
+傳承的智慧 <span class="text-gold text-sm ml-2 font-sans tracking-normal border-l border-warmgray pl-2">家族稅務與法律風險</span>
+</div>
+<div class="hidden md:flex space-x-6 text-sm">
+<a href="#dilemmas" class="hover:text-gold transition">實務困境</a>
+<a href="#impact" class="hover:text-gold transition">規劃影響</a>
+<a href="#assessment" class="hover:text-gold transition">自我檢核</a>
+<a href="#highlights" class="hover:text-gold transition">書籍亮點</a>
+</div>
+</div>
+</nav>
+
+<header class="pt-32 pb-20 px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between min-h-[80vh]">
+<div class="md:w-1/2 pr-0 md:pr-10 z-10">
+<div class="inline-block px-3 py-1 border border-gold text-gold text-xs tracking-widest mb-6 rounded-full">
+實務家族的稅務與法律指南
+</div>
+<h1 class="text-4xl md:text-5xl font-serif font-bold text-navy leading-tight mb-4">
+傳承的智慧<br>
+<span class="text-2xl md:text-3xl text-warmgray font-normal mt-2 block">帶您了解家族稅務與法律風險</span>
+</h1>
+<p class="text-lg text-navy/80 mb-8 leading-relaxed max-w-lg">
+搞懂遺贈稅、房地合一、家庭法律與信託工具，讓財富精準傳承下一代。<br>
+<span class="font-bold mt-2 block">別讓辛苦累積的資產，因為不懂稅法而大幅縮水！</span>
+</p>
+<div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+<a href="#assessment" class="bg-navy text-white px-8 py-3 rounded text-center hover:bg-navy/90 transition shadow-lg">開始自我檢核</a>
+<a href="#highlights" class="border border-navy text-navy px-8 py-3 rounded text-center hover:bg-beige transition">了解書籍內容</a>
+</div>
+</div>
+<div class="md:w-1/2 mt-16 md:mt-0 relative">
+<div class="absolute inset-0 bg-gold/10 rounded-full blur-3xl transform scale-150 -z-10"></div>
+<div class="bg-white p-8 md:p-12 shadow-2xl rounded-sm border border-beige relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 border-t border-r border-gold/30 -mt-4 -mr-4"></div>
+<div class="absolute bottom-0 left-0 w-32 h-32 border-b border-l border-gold/30 -mb-4 -ml-4"></div>
+<div class="text-center font-serif text-3xl text-navy mb-6 tracking-widest border-b border-beige pb-6">
+傳承的智慧
+</div>
+<div class="flex justify-center mb-6 text-gold text-5xl">
+&#x2616;
+</div>
+<div class="text-center text-warmgray text-sm tracking-widest leading-loose">
+家族財富防護網<br>
+稅務與法律佈局
+</div>
+<div class="mt-8 text-center text-xs text-navy/50 bg-beige p-3 rounded">
+企業主、高資產人群必備
+</div>
+</div>
+</div>
+</header>
+
+<section id="dilemmas" class="py-20 bg-white border-t border-b border-beige">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center mb-16 fade-in">
+<h2 class="text-3xl font-serif text-navy font-bold mb-4">實務困境：梳理您心中的疑惑</h2>
+<p class="text-warmgray max-w-2xl mx-auto">財富的傳承，不只是數字的轉移，更是一份對家人的牽掛與責任。點擊下方卡片，了解在傳承規劃的過程中，您可能面臨的真實挑戰。</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="interactive-card bg-ivory border border-beige p-8 rounded cursor-pointer" onclick="toggleCard('desc1', 'icon1')">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-bold text-navy flex items-center"><span class="text-gold mr-3 text-2xl">&#x2696;</span> 稅務壓力</h3>
+<span id="icon1" class="text-gold font-bold text-xl">+</span>
+</div>
+<p class="text-navy/80 font-medium">面對辛苦累積的資產，擔心下一代在繼承時，必須承受過重的遺贈稅壓力？</p>
+<div id="desc1" class="hidden mt-4 pt-4 border-t border-beige text-warmgray text-sm leading-relaxed">
+本書將拆解最新年度免稅額度與稅率結構，教您如何善用生前跨年贈與、免稅額度，以及高資產常見的股權架構設計，合法、合理地降低傳承時的稅務衝擊。
+</div>
+</div>
+
+<div class="interactive-card bg-ivory border border-beige p-8 rounded cursor-pointer" onclick="toggleCard('desc2', 'icon2')">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-bold text-navy flex items-center"><span class="text-gold mr-3 text-2xl">&#x1F3E0;</span> 房地傳承</h3>
+<span id="icon2" class="text-gold font-bold text-xl">+</span>
+</div>
+<p class="text-navy/80 font-medium">房地產傳承，究竟該選擇「贈與」、「繼承」還是「買賣」？哪一種方式才最符合家族現況？</p>
+<div id="desc2" class="hidden mt-4 pt-4 border-t border-beige text-warmgray text-sm leading-relaxed">
+深入剖析「房地合一稅」2.0 對於傳承的巨大影響。透過圖解分析，比較三種移轉方式在契稅、增值稅及未來出售時的所得稅差異，幫您精算最有利的路徑。
+</div>
+</div>
+
+<div class="interactive-card bg-ivory border border-beige p-8 rounded cursor-pointer" onclick="toggleCard('desc3', 'icon3')">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-bold text-navy flex items-center"><span class="text-gold mr-3 text-2xl">&#x26A0;</span> 突發變故</h3>
+<span id="icon3" class="text-gold font-bold text-xl">+</span>
+</div>
+<p class="text-navy/80 font-medium">若未來發生不可預期的變故，如何確保家人的生活不被打斷，資產能被妥善管理？</p>
+<div id="desc3" class="hidden mt-4 pt-4 border-t border-beige text-warmgray text-sm leading-relaxed">
+收錄多個真實案例解析，破解高資產族群最常踩的傳承地雷。探討家庭法律中關於特留分、繼承順序的規定，確保財富精準流向您想照顧的人。
+</div>
+</div>
+
+<div class="interactive-card bg-ivory border border-beige p-8 rounded cursor-pointer" onclick="toggleCard('desc4', 'icon4')">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-xl font-bold text-navy flex items-center"><span class="text-gold mr-3 text-2xl">&#x1F3DB;</span> 信託與遺囑</h3>
+<span id="icon4" class="text-gold font-bold text-xl">+</span>
+</div>
+<p class="text-navy/80 font-medium">聽過信託與預立遺囑，但不知道該如何靈活運用這些工具，來落實您對家人的照顧與期盼？</p>
+<div id="desc4" class="hidden mt-4 pt-4 border-t border-beige text-warmgray text-sm leading-relaxed">
+將生硬的法條轉化為日常能懂的語言。詳細解說家族信託的設立架構，如何達成「防揮霍」、「防爭產」、「專款專用」的三大防護網功能。
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="impact" class="py-20 bg-ivory">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center mb-12 fade-in">
+<h2 class="text-3xl font-serif text-navy font-bold mb-4">為什麼需要提早佈局？</h2>
+<p class="text-warmgray max-w-2xl mx-auto">無形的法律風險與高昂的稅務，可能讓三代累積的財富在瞬間折損。透過清晰的結構規劃，能有效鎖住資產價值。</p>
+</div>
+
+<div class="bg-white p-6 md:p-10 rounded shadow-sm border border-beige fade-in">
+<div class="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center">
+<div>
+<h3 class="text-xl font-bold text-navy mb-2">家族財富傳承模擬分析</h3>
+<p class="text-sm text-warmgray">模擬：世代交替時，有無進行稅務與信託規劃對資產保留率的影響 (概念示意)</p>
+</div>
+<div class="mt-4 md:mt-0 flex space-x-4 text-sm">
+<div class="flex items-center"><span class="w-3 h-3 rounded-full bg-gold mr-2"></span> 完善佈局</div>
+<div class="flex items-center"><span class="w-3 h-3 rounded-full bg-navy mr-2"></span> 缺乏規劃</div>
+</div>
+</div>
+<div class="chart-container">
+<canvas id="wealthChart"></canvas>
+</div>
+<p class="text-xs text-center text-warmgray mt-6 italic">
+* 此圖表為概念說明，實際稅務影響依據資產規模、種類及當時稅法而有顯著不同。本書將提供法規速查表供您精算。
+</p>
+</div>
+</div>
+</section>
+
+<section id="assessment" class="py-20 bg-navy text-white">
+<div class="max-w-4xl mx-auto px-6">
+<div class="text-center mb-12 fade-in">
+<h2 class="text-3xl font-serif text-white font-bold mb-4 text-gold">家族稅務防護網 自我檢核</h2>
+<p class="text-ivory/80">體驗本書的核心工具之一。透過簡單的 5 個問題，快速診斷您的家族資產佈局現況，並獲得初步建議。</p>
+</div>
+
+<div class="bg-white/10 p-8 rounded border border-gold/30 backdrop-blur-sm fade-in">
+<form id="assessmentForm" class="space-y-6">
+<div class="border-b border-white/20 pb-4">
+<p class="mb-3 font-medium">2. 您是否曾與專業人士（地政士/會計師/律師/傳承顧問/保險顧問）討論過未來的遺產稅試算與繳納資金來源？</p>
+<div class="flex space-x-6">
+<label class="flex items-center cursor-pointer"><input type="radio" name="q2" value="2" class="mr-2 text-gold focus:ring-gold" required> 有，已做好預留稅源規劃</label>
+<label class="flex items-center cursor-pointer"><input type="radio" name="q2" value="1" class="mr-2 text-gold focus:ring-gold"> 曾討論過，但尚未執行</label>
+<label class="flex items-center cursor-pointer"><input type="radio" name="q2" value="0" class="mr-2 text-gold focus:ring-gold"> 從未討論過</label>
+</div>
+</div>
+
+<div class="border-b border-white/20 pb-4">
+<p class="mb-3 font-medium">3. 針對家族持有的不動產，您是否了解「房地合一稅」對未來子孫出售時的影響？</p>
+<div class="flex space-x-6">
+<label class="flex items-center cursor-pointer"><input type="radio" name="q3" value="2" class="mr-2 text-gold focus:ring-gold" required> 充分了解並已規劃移轉方式</label>
+<label class="flex items-center cursor-pointer"><input type="radio" name="q3" value="1" class="mr-2 text-gold focus:ring-gold"> 聽過，但不確定如何試算</label>
+<label class="flex items-center cursor-pointer"><input type="radio" name="q3" value="0" class="mr-2 text-gold focus:ring-gold"> 不了解</label>
+</div>
+</div>
+
+<div class="border-b border-white/20 pb-4">
+<p class="mb-3 font-medium">4. 您的家族企業或重大資產，是否已設立「信託架構」或「閉鎖性公司」來維持經營權穩定？</p>
+<div class="flex space-x-6">
+<label class="flex items-center cursor-pointer"><input type="radio" name="q4" value="2" class="mr-2 text-gold focus:ring-gold" required> 已經設立完善架構</label>
+<label class="flex items-center cursor-pointer"><input type="radio" name="q4" value="1" class="mr-2 text-gold focus:ring-gold"> 評估中，尚無具體行動</label>
+<label class="flex items-center cursor-pointer"><input type="radio" name="q4" value="0" class="mr-2 text-gold focus:ring-gold"> 沒有，且暫無計畫 / 無家族企業</label>
+</div>
+</div>
+
+<div class="pb-4">
+<p class="mb-3 font-medium">5. 您是否已經立下合法有效的遺囑，確保財產能按照您的意志進行分配？</p>
+<div class="flex space-x-6">
+<label class="flex items-center cursor-pointer"><input type="radio" name="q5" value="2" class="mr-2 text-gold focus:ring-gold" required> 是，已透過公證或律師見證</label>
+<label class="flex items-center cursor-pointer"><input type="radio" name="q5" value="1" class="mr-2 text-gold focus:ring-gold"> 有口頭交代或自行書寫，未公證</label>
+<label class="flex items-center cursor-pointer"><input type="radio" name="q5" value="0" class="mr-2 text-gold focus:ring-gold"> 尚未立下遺囑</label>
+</div>
+</div>
+
+<button type="button" onclick="calculateScore()" class="w-full bg-gold text-navy font-bold py-4 rounded hover:bg-gold/90 transition shadow-lg mt-6">
+檢視我的防護網分數
+</button>
+</form>
+
+<div id="resultArea" class="hidden mt-8 p-6 bg-ivory text-navy rounded border border-gold">
+<h3 class="text-2xl font-serif font-bold text-center mb-4 text-gold" id="scoreTitle"></h3>
+<p class="text-center text-lg mb-6" id="scoreMessage"></p>
+<div class="bg-beige p-4 rounded text-sm text-warmgray">
+<p class="font-bold mb-2">本書能為您提供的具體幫助：</p>
+<ul class="list-disc pl-5 space-y-1">
+<li>釐清觀念：將生硬的法條轉化為日常能懂的語言。</li>
+<li>圖解分析：複雜的股權結構或繼承關係用流程圖呈現。</li>
+<li>實戰工具：每章節末提供更詳盡的「自我檢查清單」。</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="highlights" class="py-20 bg-white">
+<div class="max-w-6xl mx-auto px-6">
+<div class="flex flex-col md:flex-row items-center justify-between mb-16">
+<div class="md:w-1/2 mb-8 md:mb-0">
+<h2 class="text-3xl font-serif text-navy font-bold mb-4">《傳承的智慧》書籍亮點</h2>
+<p class="text-warmgray leading-relaxed">
+這是一本為您梳理思緒的實用指南。我們一步步陪伴您釐清家族的資產脈絡，讓您的每一分財富，都能化作對家人最安穩的祝福。
+</p>
+</div>
+<div class="md:w-1/3 bg-beige p-6 rounded border border-gold/20 shadow-sm">
+<h3 class="font-bold text-navy mb-4 border-b border-warmgray/30 pb-2">誰適合閱讀這本書？</h3>
+<ul class="space-y-3">
+<li class="flex items-start"><span class="text-gold mr-2">&#10003;</span> <span class="text-sm text-navy/80">關心財富永續、想及早規劃的父母與長輩</span></li>
+<li class="flex items-start"><span class="text-gold mr-2">&#10003;</span> <span class="text-sm text-navy/80">面臨資產傳承階段的中小企業主與創業家</span></li>
+<li class="flex items-start"><span class="text-gold mr-2">&#10003;</span> <span class="text-sm text-navy/80">希望為家族資產建立防護網的高資產人士</span></li>
+</ul>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-ivory p-8 rounded border border-beige text-center hover:border-gold transition">
+<div class="w-16 h-16 mx-auto bg-gold text-white rounded-full flex items-center justify-center text-2xl mb-6 shadow-md">
+&#x2611;
+</div>
+<h3 class="text-xl font-bold text-navy mb-3">實務檢核表</h3>
+<p class="text-warmgray text-sm">
+每一章結尾附上「家族稅務自我檢查清單」，幫助您將理論知識轉化為具體的盤點行動。
+</p>
+</div>
+
+<div class="bg-ivory p-8 rounded border border-beige text-center hover:border-gold transition">
+<div class="w-16 h-16 mx-auto bg-gold text-white rounded-full flex items-center justify-center text-2xl mb-6 shadow-md">
+&#x25A6;
+</div>
+<h3 class="text-xl font-bold text-navy mb-3">圖解結構分析</h3>
+<p class="text-warmgray text-sm">
+突破文字限制，將複雜的股權結構、信託運作模式或繼承關係，用清晰直觀的流程圖呈現。
+</p>
+</div>
+
+<div class="bg-ivory p-8 rounded border border-beige text-center hover:border-gold transition">
+<div class="w-16 h-16 mx-auto bg-gold text-white rounded-full flex items-center justify-center text-2xl mb-6 shadow-md">
+&#x1F4DA;
+</div>
+<h3 class="text-xl font-bold text-navy mb-3">最新法規速查</h3>
+<p class="text-warmgray text-sm">
+隨書附錄最新年度的遺贈稅率表、免稅額度一覽表及重要法條，成為您隨時可翻閱的工具庫。
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="bg-navy text-center py-12 border-t-4 border-gold">
+<div class="max-w-4xl mx-auto px-6 text-ivory">
+<h2 class="text-2xl font-serif mb-6">提早釐清觀念，傳承之路從容且安心</h2>
+<p class="text-ivory/60 text-sm mb-8">《傳承的智慧：帶您了解家族稅務與法律風險》—— 讓財富精準流向下一代。</p>
+<a href="https://forms.gle/您的表單連結請貼在這裡" target="_blank" rel="noopener noreferrer" class="inline-block bg-transparent border border-gold text-gold hover:bg-gold hover:text-navy px-8 py-2 rounded transition">
+立即點此預購
+</a>
+<p class="text-xs text-white/30 mt-12">&copy; 2026 家族稅務規劃實務. All rights reserved.</p>
+</div>
+</footer>
+
+<script>
+// Fade-in observer
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('visible');
+}
+});
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+// Toggle cards function
+function toggleCard(descId, iconId) {
+const desc = document.getElementById(descId);
+const icon = document.getElementById(iconId);
+const isHidden = desc.classList.contains('hidden');
+
+// Close all first (optional accordion behavior, but let's keep them independent for better exploration)
+if (isHidden) {
+desc.classList.remove('hidden');
+icon.innerText = '-';
+} else {
+desc.classList.add('hidden');
+icon.innerText = '+';
+}
+}
+
+// Chart.js Configuration
+document.addEventListener('DOMContentLoaded', function() {
+const ctx = document.getElementById('wealthChart').getContext('2d');
+
+const wealthChart = new Chart(ctx, {
+type: 'line',
+data: {
+labels: ['第一代 (創始)', '第二代 (傳承)', '第三代 (接班)'],
+datasets: [
+{
+label: '有稅務與法律佈局 (善用信託/免稅額)',
+data: [100, 92, 85],
+borderColor: '#B8905B', // Gold
+backgroundColor: 'rgba(184, 144, 91, 0.1)',
+borderWidth: 3,
+pointBackgroundColor: '#B8905B',
+pointRadius: 6,
+fill: true,
+tension: 0.3
+},
+{
+label: '無規劃 (面臨高額稅負與可能紛爭)',
+data: [100, 65, 35],
+borderColor: '#2C3E50', // Navy
+backgroundColor: 'rgba(44, 62, 80, 0.05)',
+borderWidth: 3,
+borderDash: [5, 5],
+pointBackgroundColor: '#2C3E50',
+pointRadius: 6,
+fill: true,
+tension: 0.3
+}
+]
+},
+options: {
+responsive: true,
+maintainAspectRatio: false,
+plugins: {
+legend: {
+display: false // Handled via custom HTML above chart
+},
+tooltip: {
+backgroundColor: 'rgba(44, 62, 80, 0.9)',
+titleFont: { family: '"Noto Sans TC", sans-serif', size: 14 },
+bodyFont: { family: '"Noto Sans TC", sans-serif', size: 13 },
+callbacks: {
+label: function(context) {
+return context.dataset.label + ': 資產保留約 ' + context.parsed.y + '%';
+}
+}
+}
+},
+scales: {
+y: {
+beginAtZero: true,
+max: 110,
+grid: {
+color: 'rgba(184, 144, 91, 0.1)',
+drawBorder: false
+},
+ticks: {
+callback: function(value) {
+return value + '%';
+},
+color: '#8C857B'
+}
+},
+x: {
+grid: { display: false },
+ticks: { color: '#2C3E50', font: { weight: 'bold' } }
+}
+},
+interaction: {
+mode: 'index',
+intersect: false,
+}
+}
+});
+});
+
+// Checklist Calculation Logic
+function calculateScore() {
+const form = document.getElementById('assessmentForm');
+const q1 = form.querySelector('input[name="q1"]:checked');
+const q2 = form.querySelector('input[name="q2"]:checked');
+const q3 = form.querySelector('input[name="q3"]:checked');
+const q4 = form.querySelector('input[name="q4"]:checked');
+const q5 = form.querySelector('input[name="q5"]:checked');
+
+if (!q1 || !q2 || !q3 || !q4 || !q5) {
+alert('請完成所有 5 個問題，以獲取精準診斷。');
+return;
+}
+
+let score = parseInt(q1.value) + parseInt(q2.value) + parseInt(q3.value) + parseInt(q4.value) + parseInt(q5.value);
+// Max score = 10, Min score = 0
+
+const resultArea = document.getElementById('resultArea');
+const titleObj = document.getElementById('scoreTitle');
+const msgObj = document.getElementById('scoreMessage');
+
+resultArea.classList.remove('hidden');
+form.classList.add('hidden');
+
+if (score >= 8) {
+titleObj.innerText = "防護網等級：A (穩健佈局)";
+msgObj.innerHTML = "您具備極高的財富傳承意識，且已採取具體行動。<br>建議透過本書的<strong>【法規速查與圖解分析】</strong>，定期檢視現有架構是否符合最新稅法變動。";
+} else if (score >= 4) {
+titleObj.innerText = "防護網等級：B (風險潛伏)";
+msgObj.innerHTML = "您已有初步概念，但尚未形成完整的法律與稅務防護網。<br>強烈建議透過本書的<strong>【實務檢核表】</strong>與真實案例，補足現狀與完美傳承之間的缺口。";
+} else {
+titleObj.innerText = "防護網等級：C (亟需規劃)";
+msgObj.innerHTML = "您的家族資產目前暴露在極高的稅務折損與傳承紛爭風險中。<br>請務必閱讀本書，從基礎的<strong>遺贈稅及房地合一稅</strong>開始釐清，及早啟動規劃流程！";
+}
+}
+</script>
+</body>
+</html>
