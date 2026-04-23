@@ -193,7 +193,7 @@ border-color: #B8905B;
 <div class="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center">
 <div>
 <h3 class="text-xl font-bold text-navy mb-2">家族財富傳承模擬分析</h3>
-<p class="text-sm text-warmgray">模擬：世代交替時，有無進行稅務與信託規劃對資產保留率的影響 (概念示意)</p>
+<p class="text-sm text-warmgray">模擬：世代交替時，有無進行稅務與信託規劃對家族資產規模的影響 (概念示意)</p>
 </div>
 <div class="mt-4 md:mt-0 flex space-x-4 text-sm">
 <div class="flex items-center"><span class="w-3 h-3 rounded-full bg-gold mr-2"></span> 完善佈局</div>
@@ -387,8 +387,8 @@ data: {
 labels: ['第一代 (創始)', '第二代 (傳承)', '第三代 (接班)'],
 datasets: [
 {
-label: '有稅務與法律佈局 (善用信託/免稅額)',
-data: [100, 92, 85],
+label: '有稅務與法律佈局 (穩健傳承與增長)',
+data: [100, 110, 120], // 調整為更合理的緩步成長
 borderColor: '#B8905B', // Gold
 backgroundColor: 'rgba(184, 144, 91, 0.1)',
 borderWidth: 3,
@@ -398,8 +398,8 @@ fill: true,
 tension: 0.3
 },
 {
-label: '無規劃 (面臨高額稅負與可能紛爭)',
-data: [100, 65, 35],
+label: '無規劃 (面臨稅負與潛在耗損)',
+data: [100, 75, 55], // 調整為更符合實際稅率與耗損的下降幅度
 borderColor: '#2C3E50', // Navy
 backgroundColor: 'rgba(44, 62, 80, 0.05)',
 borderWidth: 3,
@@ -424,7 +424,7 @@ titleFont: { family: '"Noto Sans TC", sans-serif', size: 14 },
 bodyFont: { family: '"Noto Sans TC", sans-serif', size: 13 },
 callbacks: {
 label: function(context) {
-return context.dataset.label + ': 資產保留約 ' + context.parsed.y + '%';
+return context.dataset.label + ': 資產規模約 ' + context.parsed.y + '%';
 }
 }
 }
@@ -432,7 +432,7 @@ return context.dataset.label + ': 資產保留約 ' + context.parsed.y + '%';
 scales: {
 y: {
 beginAtZero: true,
-max: 110,
+max: 140, // 配合新數據調降最大值，讓圖表比例更均衡
 grid: {
 color: 'rgba(184, 144, 91, 0.1)',
 drawBorder: false
