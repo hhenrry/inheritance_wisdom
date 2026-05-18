@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>114年版-全方位遺產稅與財富分配報告書 (專業實務分單版)</title>
+<style>
+    /* 核心色彩與字體 */
+    :root { --primary: #2c3e50; --secondary: #3498db; --bg: #f4f7f6; --danger: #c0392b; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); color: #333; line-height: 1.6; padding: 20px; margin: 0; }
+    .container { max-width: 1200px; margin: auto; }
+    
+    /* 報告書專屬表頭 */
+    .report-header { background: #fff; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); border-top: 5px solid var(--secondary); display: flex; flex-direction: column; gap: 15px; }
+    .header-client { font-size: 20px; font-weight: bold; color: var(--primary); display: flex; align-items: center; }
+    .header-client input { font-size: 20px; font-weight: bold; border: none; border-bottom: 1px solid #7f8c8d; padding: 0 10px; width: 250px; outline: none; text-align: center; color: var(--primary); background: transparent; margin: 0 10px; }
+    .header-client input:focus { border-bottom-color: var(--secondary); }
+    .header-info-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
+    .header-group { display: flex; align-items: center; gap: 5px; flex: 1; min-width: 200px; }
+    .header-group label { font-weight: bold; color: #7f8c8d; white-space: nowrap; }
+    .header-group input { flex: 1; padding: 6px; border: 1px solid #ccc; border-radius: 4px; font-size: 15px; outline: none; color: #333; font-weight: bold; }
+    
+    /* 雙欄排版區 */
+    .two-column-layout { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+    .panel { background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); flex: 1; min-width: 380px; }
+    h2 { color: var(--primary); border-bottom: 2px solid var(--secondary); padding-bottom: 10px; margin-top: 0; font-size: 20px; }
+    .notice { font-size: 14px; color: var(--danger); font-weight: bold; margin-bottom: 15px; display: inline-block; padding: 5px 10px; background: #fdeaea; border-radius: 4px; }
+    
+    /* 免稅額提示區塊 */
+    .exemption-box { background-color: #e8f4fd; border-left: 5px solid var(--secondary); padding: 12px 15px; border-radius: 4px; margin-bottom: 15px; font-weight: bold; color: var(--primary); font-size: 15px; }
+
+    /* 表單輸入元件 */
+    .form-group { margin-bottom: 15px; }
+    label { display: block; font-weight: bold; margin-bottom: 5px; color: #444; }
+    .input-wrapper { display: flex; align-items: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 4px; padding-right: 10px; transition: 0.3s;}
+    .input-wrapper:focus-within { border-color: var(--secondary); box-shadow: 0 0 5px rgba(52, 152, 219, 0.3); }
+    .input-wrapper input[type="number"] { width: 55%; padding: 10px; border: none; background: transparent; font-size: 16px; outline: none; border-right: 1px solid #ddd; }
+    input[type="number"].small-input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+    input[type="checkbox"] { transform: scale(1.2); margin-right: 8px; cursor: pointer; }
+    
+    .hint-text { color: var(--secondary); font-weight: bold; font-size: 15px; text-align: right; flex: 1; white-space: nowrap; }
+    .print-btn { display: block; width: 100%; padding: 15px; background-color: var(--primary); color: white; border: none; border-radius: 6px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 0 #1a252f; margin-top: 25px; }
+    .print-btn:hover { background-color: #34495e; transform: translateY(2px); box-shadow: 0 2px 0 #1a252f; }
+
+    /* 總覽區與表格 */
+    .summary-box { background-color: #e8f4fd; padding: 15px 20px; border-radius: 6px; margin-bottom: 25px; border-left: 5px solid var(--secondary); }
+    .summary-item { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 16px; }
+    .summary-formula { border-top: 1px dashed #bdc3c7; margin-top: 8px; padding-top: 8px; font-weight: bold; color: var(--danger); }
+    
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
+    th, td { border: 1px solid #ddd; padding: 12px 10px; text-align: right; vertical-align: top; }
+    th { background-color: #f8f9fa; text-align: center; color: var(--primary); }
+    td:first-child { text-align: left; font-weight: bold; }
+    .fraction-text { font-size: 13px; color: #7f8c8d; font-weight: bold; margin-top: 6px; }
+    .highlight { background-color: #fff3e0; font-weight: bold; color: #d35400; font-size: 15px;}
+    .calc-detail { display: block; font-size: 12px; color: #7f8c8d; font-weight: normal; margin-top: 6px; line-height: 1.4; background: #f9f9f9; padding: 6px; border-radius: 4px; border: 1px solid #eee; text-align: right; }
+    .detail-tag { display: inline-block; padding: 2px 4px; background: #e8f4fd; border-radius: 3px; border: 1px solid #b3d7ff; margin-bottom: 3px; color: #2c3e50; font-weight: bold; }
+
+    /* ★ 完美修復的列印排版 ★ */
+    @media print {
+        @page { margin: 1cm; }
+        body { background-color: white; padding: 0; margin: 0; color: #000; }
+        .container { max-width: 100% !important; margin: 0; padding: 0; }
+        .two-column-layout { display: block; } 
+        
+        .report-header { box-shadow: none; border: none; border-bottom: 2px solid #000; border-top: none; padding: 0 0 15px 0; border-radius: 0; margin-bottom: 20px; display: block; }
+        .header-client { margin-bottom: 10px; }
+        .header-info-row { display: block; } 
+        .header-group { display: inline-block; width: auto; margin-right: 25px; margin-bottom: 5px; }
+        .header-group input, .header-client input { border: none; background: transparent; padding: 0; font-weight: bold; pointer-events: none; color: #000; }
+        
+        .panel { box-shadow: none; border: none; padding: 0; margin-bottom: 20px; page-break-inside: avoid; }
+        .input-wrapper { border: none; background: transparent; padding: 0; }
+        .input-wrapper input[type="number"] { border: none; background: transparent; padding: 0; font-weight: bold; text-align: left; color: #000; }
+        input[type="number"].small-input, input[type="checkbox"] { pointer-events: none; border: none; background: transparent; font-weight: bold; color: #000; }
+        
+        .hint-text, .print-btn, .notice { display: none !important; }
+        .summary-box, th, .highlight, .calc-detail, .exemption-box, .detail-tag { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1 style="text-align: center; color: var(--primary); margin-bottom: 5px;">遺產稅務與財富分配報告書</h1>
+    <div style="text-align: center; margin-bottom: 20px;"><span class="notice">本試算適用於 114 年 1 月 1 日以後發生之繼承案件 (依國稅局最新分單原則試算)</span></div>
+    
+    <div class="report-header">
+        <div class="header-client">致：<input type="text" placeholder="請輸入客戶姓名"> 閣下</div>
+        <div class="header-info-row">
+            <div class="header-group"><label>規劃單位：</label><input type="text" value="專業財富傳承顧問團隊"></div>
+            <div class="header-group"><label>專屬顧問：</label><input type="text" placeholder="請輸入顧問姓名"></div>
+            <div class="header-group"><label>聯絡電話：</label><input type="text" placeholder="請輸入聯絡電話"></div>
+        </div>
+    </div>
+
+    <div class="two-column-layout">
+        
+        <div class="panel">
+            <h2>1. 財產與生前贈與設定</h2>
+            <div class="form-group">
+                <label>死亡時留存財產 (將依應繼分分配)</label>
+                <div class="input-wrapper"><input type="number" id="inp-netAssets" value="20000000" oninput="runCalc()"><span class="hint-text" id="hint-netAssets"></span></div>
+            </div>
+            <div class="form-group">
+                <label>2年內贈與配偶 (由配偶獨立負擔稅單)</label>
+                <div class="input-wrapper"><input type="number" id="inp-spouseIn" value="5000000" oninput="runCalc()"><span class="hint-text" id="hint-spouseIn"></span></div>
+            </div>
+            <div class="form-group">
+                <label>2年外贈與配偶 (已免稅，不計入遺產)</label>
+                <div class="input-wrapper"><input type="number" id="inp-spouseOut" value="2000000" oninput="runCalc()"><span class="hint-text" id="hint-spouseOut"></span></div>
+            </div>
+            <div class="form-group">
+                <label>2年內贈與子女總計 (由子女獨立負擔稅單)</label>
+                <div class="input-wrapper"><input type="number" id="inp-childIn" value="3000000" oninput="runCalc()"><span class="hint-text" id="hint-childIn"></span></div>
+            </div>
+            <div class="form-group">
+                <label>2年外贈與子女總計 (已免稅，不計入遺產)</label>
+                <div class="input-wrapper"><input type="number" id="inp-childOut" value="1000000" oninput="runCalc()"><span class="hint-text" id="hint-childOut"></span></div>
+            </div>
+
+            <h2>2. 繼承人與扣除額 (114年現行標準)</h2>
+            <div class="exemption-box">
+                ✔ 系統已自動扣除被繼承人免稅額：固定 1,333 萬元
+            </div>
+
+            <div class="form-group" style="display: flex; gap: 20px;">
+                <label><input type="checkbox" id="chk-hasSpouse" checked onchange="runCalc()"> 配偶存活 (扣553萬)</label>
+                <label><input type="checkbox" id="chk-funeral" checked onchange="runCalc()"> 扣喪葬費 (扣138萬)</label>
+            </div>
+            <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                <div style="flex:1;"><label>子女人數 (每人56萬)</label><input type="number" id="inp-numChild" class="small-input" value="2" min="0" oninput="runCalc()"></div>
+                <div style="flex:1;"><label>父母人數 (每人138萬)</label><input type="number" id="inp-numParent" class="small-input" value="0" min="0" oninput="runCalc()"></div>
+            </div>
+            <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+                <div style="flex:1;"><label>兄弟姊妹人數</label><input type="number" id="inp-numSibling" class="small-input" value="0" min="0" oninput="runCalc()"></div>
+                <div style="flex:1;"><label>祖父母人數</label><input type="number" id="inp-numGrand" class="small-input" value="0" min="0" oninput="runCalc()"></div>
+            </div>
+            <div class="form-group">
+                <label>其他未償債務與扣除額總計</label>
+                <div class="input-wrapper"><input type="number" id="inp-otherDebts" value="0" oninput="runCalc()"><span class="hint-text" id="hint-otherDebts"></span></div>
+            </div>
+            
+            <button class="print-btn" onclick="window.print()">🖨️ 列印專業報告書</button>
+        </div>
+
+        <div class="panel">
+            <h2>稅負評估總覽</h2>
+            <div class="summary-box">
+                <div class="summary-item"><span>遺產總額 (留存 + 2年內贈與)：</span><span id="out-taxBase">0</span></div>
+                <div class="summary-item" style="color:#7f8c8d;"><span>減：被繼承人免稅額：</span><span>13,330,000 元</span></div>
+                <div class="summary-item" style="color:#7f8c8d;"><span>減：各項扣除額合計：</span><span id="out-deductions">0</span></div>
+                <div class="summary-item summary-formula"><span>等於：課稅遺產淨額：</span><span id="out-netTaxable">0</span></div>
+                <div class="summary-item" style="margin-top: 10px;"><span>適用稅率級距 (114年版)：</span><span id="out-rateInfo" style="color:var(--primary); font-weight:bold;">未計算</span></div>
+                <div class="summary-item summary-formula" style="font-size: 18px;"><span>預估總遺產稅額：</span><strong id="out-totalTax">0</strong></div>
+            </div>
+
+            <h2>分配與分單結果</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="28%">繼承人與法定比例</th>
+                        <th width="24%">民法應繼財產</th>
+                        <th width="24%">國稅局分單負擔稅額</th>
+                        <th width="24%">最終總財富</th>
+                    </tr>
+                </thead>
+                <tbody id="out-tableBody">
+                    </tbody>
+            </table>
+        </div>
+        
+    </div>
+</div>
+
+<script>
+// --- 1. 中文數字轉換器 ---
+function toTw(val) {
+    if (!val) return "0 元";
+    let numStr = String(val).replace(/,/g, '');
+    let n = parseInt(numStr, 10);
+    if (isNaN(n) || n === 0) return "0 元";
+    
+    let sign = n < 0 ? "-" : "";
+    n = Math.abs(n);
+    let yi = Math.floor(n / 100000000);
+    let wan = Math.floor((n % 100000000) / 10000);
+    let yuan = n % 10000;
+    
+    let str = "";
+    if (yi > 0) str += yi + " 億 ";
+    if (wan > 0) str += wan + " 萬 ";
+    if (yuan > 0) str += yuan + " 元";
+    else if (str !== "") str += "元";
+    return sign + str.trim();
+}
+
+function fmt(n) {
+    return Math.round(Number(n)).toLocaleString('zh-TW') + " 元";
+}
+
+function setHtml(id, html) {
+    let el = document.getElementById(id);
+    if (el) el.innerHTML = html;
+}
+
+// --- 2. 核心計算引擎 (依最新實務重寫) ---
+function runCalc() {
+    try {
+        // A. 更新提示
+        const ids = ['netAssets', 'spouseIn', 'spouseOut', 'childIn', 'childOut', 'otherDebts'];
+        ids.forEach(id => {
+            let el = document.getElementById('inp-' + id);
+            let hintEl = document.getElementById('hint-' + id);
+            if (el && hintEl) hintEl.innerText = toTw(el.value);
+        });
+
+        // B. 取得數值
+        let netAssets = parseInt(document.getElementById('inp-netAssets').value) || 0;
+        let spouseIn = parseInt(document.getElementById('inp-spouseIn').value) || 0;
+        let spouseOut = parseInt(document.getElementById('inp-spouseOut').value) || 0;
+        let childIn = parseInt(document.getElementById('inp-childIn').value) || 0;
+        let childOut = parseInt(document.getElementById('inp-childOut').value) || 0;
+        let otherDebts = parseInt(document.getElementById('inp-otherDebts').value) || 0;
+        
+        let hasSpouse = document.getElementById('chk-hasSpouse').checked;
+        let funeral = document.getElementById('chk-funeral').checked;
+        let c = parseInt(document.getElementById('inp-numChild').value) || 0;
+        let p = parseInt(document.getElementById('inp-numParent').value) || 0;
+        let s = parseInt(document.getElementById('inp-numSibling').value) || 0;
+        let g = parseInt(document.getElementById('inp-numGrand').value) || 0;
+
+        // C. 計算總稅基與總稅額
+        let baseExemption = 13330000;
+        let otherDeductions = (hasSpouse ? 5530000 : 0) + (c * 560000) + (p * 1380000) + (funeral ? 1380000 : 0) + otherDebts;
+        let totalDeductions = baseExemption + otherDeductions;
+
+        let taxBase = netAssets + spouseIn + childIn; // 總額 = 留存 + 所有內贈
+        let netTaxable = Math.max(0, taxBase - totalDeductions);
+        
+        let totalTax = 0;
+        let rateString = "無須繳稅";
+
+        if (netTaxable > 0) {
+            if (netTaxable <= 56210000) {
+                totalTax = netTaxable * 0.10;
+                rateString = "10%";
+            } else if (netTaxable <= 112420000) {
+                totalTax = netTaxable * 0.15 - 2810500;
+                rateString = "15% (扣減累進差額 2,810,500元)";
+            } else {
+                totalTax = netTaxable * 0.20 - 8431500;
+                rateString = "20% (扣減累進差額 8,431,500元)";
+            }
+        }
+
+        // 更新總覽
+        setHtml('out-taxBase', fmt(taxBase));
+        setHtml('out-deductions', fmt(otherDeductions));
+        setHtml('out-netTaxable', fmt(netTaxable));
+        setHtml('out-rateInfo', rateString);
+        setHtml('out-totalTax', fmt(totalTax));
+
+        // D. 判定應繼分比例
+        let spBase = "", spComp = "", spShare = 0;
+        let othBase = "", othComp = "", othShare = 0;
+        let rankName = "", rankCount = 0;
+
+        if (c > 0) {
+            rankName = "子女"; rankCount = c;
+            if (hasSpouse) {
+                spShare = 1 / (c + 1); othShare = c / (c + 1);
+                spBase = `1/${c+1}`; spComp = `1/${(c+1)*2}`;
+                othBase = `各 1/${c+1}`; othComp = `各 1/${(c+1)*2}`;
+            } else {
+                othShare = 1;
+                othBase = `各 1/${c}`; othComp = `各 1/${c*2}`;
+            }
+        } else if (p > 0) {
+            rankName = "父母"; rankCount = p;
+            if (hasSpouse) {
+                spShare = 0.5; othShare = 0.5;
+                spBase = `1/2`; spComp = `1/4`;
+                othBase = `各 1/${p*2}`; othComp = `各 1/${p*4}`;
+            } else {
+                othShare = 1;
+                othBase = `各 1/${p}`; othComp = `各 1/${p*2}`;
+            }
+        } else if (s > 0) {
+            rankName = "兄弟姊妹"; rankCount = s;
+            if (hasSpouse) {
+                spShare = 0.5; othShare = 0.5;
+                spBase = `1/2`; spComp = `1/4`;
+                othBase = `各 1/${s*2}`; othComp = `各 1/${s*6}`;
+            } else {
+                othShare = 1;
+                othBase = `各 1/${s}`; othComp = `各 1/${s*3}`;
+            }
+        } else if (g > 0) {
+            rankName = "祖父母"; rankCount = g;
+            if (hasSpouse) {
+                spShare = 2/3; othShare = 1/3;
+                spBase = `2/3`; spComp = `1/3`;
+                othBase = `各 1/${g*3}`; othComp = `各 1/${g*9}`;
+            } else {
+                othShare = 1;
+                othBase = `各 1/${g}`; othComp = `各 1/${g*3}`;
+            }
+        } else if (hasSpouse) {
+            spShare = 1;
+            spBase = `全部`; spComp = `1/2`;
+        }
+
+        let spInherit = netAssets * spShare;
+        let othInherit = netAssets * othShare;
+
+        // E. ★ 核心修正：國稅局分單邏輯 ★
+        // 1. 先算出三張稅單的絕對金額
+        let spGiftTaxBill = taxBase > 0 ? totalTax * (spouseIn / taxBase) : 0; // 配偶內贈專屬稅單
+        let chGiftTaxBill = taxBase > 0 ? totalTax * (childIn / taxBase) : 0;  // 子女內贈專屬稅單
+        let remainTaxBill = taxBase > 0 ? totalTax * (netAssets / taxBase) : 0; // 留存遺產全體稅單
+
+        // 2. 將「留存遺產全體稅單」依應繼分比例分攤
+        let spRemainTaxShare = remainTaxBill * spShare;
+        let othRemainTaxShare = remainTaxBill * othShare;
+
+        // 3. 結算各自實際要繳的總稅款
+        let spFinalTax = spGiftTaxBill + spRemainTaxShare;
+        let isChild = (rankCount === c && c > 0);
+        
+        // 若子女為繼承人，需負擔自己的內贈稅單 + 留存分攤。若為其他順位，僅負擔留存分攤。
+        let othFinalTax = isChild ? (chGiftTaxBill + othRemainTaxShare) : othRemainTaxShare;
+
+        // 4. 計算最終總財富
+        let spFinalWealth = spInherit - spFinalTax + spouseIn + spouseOut;
+        let othFinalWealth = isChild ? (othInherit - othFinalTax + childIn + childOut) : (othInherit - othFinalTax);
+
+        // F. 輸出表格
+        let tbody = "";
+
+        if (hasSpouse) {
+            tbody += `<tr>
+                <td>配偶<div class="fraction-text">應繼分：${spBase} | 特留分：${spComp}</div></td>
+                <td>${fmt(spInherit)}<div class="calc-detail">留存財產 × ${spBase}</div></td>
+                <td style="color:#c0392b;"><strong>${fmt(spFinalTax)}</strong>
+                    <div class="calc-detail">
+                        <span class="detail-tag">內贈專屬稅單</span> ${fmt(spGiftTaxBill)}<br>
+                        <span class="detail-tag">留存遺產分攤</span> ${fmt(spRemainTaxShare)}
+                    </div>
+                </td>
+                <td class="highlight">${fmt(spFinalWealth)}<div class="calc-detail">應繼 - 總稅金 + 所有贈與</div></td>
+            </tr>`;
+        }
+
+        if (rankCount > 0) {
+            let taxDetailStr = "";
+            if (isChild && childIn > 0) {
+                taxDetailStr = `<span class="detail-tag">內贈專屬稅單</span> ${fmt(chGiftTaxBill)}<br><span class="detail-tag">留存遺產分攤</span> ${fmt(othRemainTaxShare)}`;
+            } else {
+                taxDetailStr = `<span class="detail-tag">留存遺產分攤</span> ${fmt(othRemainTaxShare)}`;
+            }
+            
+            let wealthStr = isChild ? "應繼 - 總稅金 + 所有贈與" : "應繼 - 總稅金";
+
+            tbody += `<tr>
+                <td>${rankName} (共 ${rankCount} 人合計)<div class="fraction-text">應繼分：${othBase} | 特留分：${othComp}</div></td>
+                <td>${fmt(othInherit)}<div class="calc-detail">留存財產 × 總比例</div></td>
+                <td style="color:#c0392b;"><strong>${fmt(othFinalTax)}</strong>
+                    <div class="calc-detail">${taxDetailStr}</div>
+                </td>
+                <td class="highlight">${fmt(othFinalWealth)}<div class="calc-detail">${wealthStr}</div></td>
+            </tr>`;
+        }
+
+        if (!hasSpouse && rankCount === 0) {
+            tbody = `<tr><td colspan="4" style="text-align:center; padding:30px; font-weight:bold; color:#7f8c8d;">查無合法繼承人設定。</td></tr>`;
+        }
+
+        setHtml('out-tableBody', tbody);
+
+    } catch (e) {
+        console.error("系統運算錯誤：", e);
+        document.getElementById('out-tableBody').innerHTML = `<tr><td colspan="4" style="text-align:center; color:red;">系統計算發生異常，請確認數值。</td></tr>`;
+    }
+}
+
+window.onload = function() {
+    runCalc();
+};
+</script>
+</body>
+</html>
