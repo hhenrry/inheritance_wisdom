@@ -1,4 +1,5 @@
 :root {
+  /* 原始專業配色 */
   --cream:       #F5F0E2;
   --cream-dark:  #E8DFC8;
   --cream-mid:   #EDE5D0;
@@ -25,10 +26,10 @@ body{
   font-family:'Noto Sans TC',sans-serif;
   background:var(--cream);
   color:var(--text);
-  /* 日系排版：適度增加基礎字級與字距 */
+  /* 日系排版設定 */
   font-size: 15px; 
-  letter-spacing: 0.03em;
-  line-height:1.85;
+  letter-spacing: 0.04em;
+  line-height:1.9;
   overflow-x:hidden;
 }
 body::before{
@@ -59,10 +60,10 @@ nav{
   background:var(--gold);color:var(--white)!important;
   padding:9px 22px;border-radius:4px;
   font-size:14px!important;letter-spacing:2px!important;
-  transition:background 0.2s!important;
+  transition:all 0.2s!important;
   box-shadow:0 2px 12px rgba(139,109,63,0.25);
 }
-.nav-buy:hover{background:var(--gold-light)!important;}
+.nav-buy:hover{background:var(--gold-light)!important;transform:translateY(-1px);}
 
 /* ─── HERO ─── */
 .hero{
@@ -88,7 +89,7 @@ nav{
 .hero-text{padding-right:56px;position:relative;z-index:1;}
 .hero-eyebrow{
   font-size:14px;letter-spacing:3px;
-  color:var(--navy);font-weight:500;
+  color:var(--navy);font-weight:600;
   margin-bottom:14px;
   display:flex;align-items:center;gap:10px;
   font-family:'Noto Serif TC',serif;
@@ -100,7 +101,7 @@ nav{
 .hero-title{
   font-family:'Noto Serif TC',serif;
   font-size:clamp(2.2rem,4.4vw,3.6rem);
-  font-weight:700;color:#019eaf;
+  font-weight:700;color:var(--teal);
   line-height:1.05;letter-spacing:8px;
   margin-bottom:18px;
   white-space:nowrap;
@@ -116,8 +117,8 @@ nav{
   font-size:16px;color:var(--text-mid);
   line-height:2.2;margin-bottom:48px;
   padding:18px 20px;
-  background:rgba(255,253,245,0.6);
-  border-left:3px solid var(--gold);
+  background:rgba(255,253,245,0.7);
+  border-left:4px solid var(--gold);
   border-radius:0 6px 6px 0;
 }
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px;}
@@ -132,12 +133,13 @@ nav{
 .btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 28px rgba(139,109,63,0.35);}
 .btn-secondary{
   display:inline-flex;align-items:center;gap:8px;
+  background:var(--white);
   border:1.5px solid var(--navy);color:var(--navy);
   padding:14px 28px;border-radius:4px;
   text-decoration:none;font-size:15px;letter-spacing:2px;
   transition:all 0.3s;
 }
-.btn-secondary:hover{background:rgba(43,59,110,0.06);transform:translateY(-2px);}
+.btn-secondary:hover{background:var(--navy);color:var(--white);transform:translateY(-2px);box-shadow:0 8px 24px rgba(43,59,110,0.3);}
 .hero-meta{
   display:flex;gap:28px;
   padding-top:28px;border-top:1px solid var(--cream-dark);
@@ -161,7 +163,7 @@ nav{
 .book-cover{
   width:100%;max-width:460px;
   border-radius:4px 10px 10px 4px;
-  box-shadow:-6px 0 0 rgba(44,31,14,0.18),0 20px 56px rgba(44,31,14,0.22),3px 3px 0 rgba(44,31,14,0.06);
+  box-shadow:-6px 0 0 rgba(44,31,14,0.12),0 20px 56px rgba(44,31,14,0.18),3px 3px 0 rgba(44,31,14,0.04);
   display:block;
 }
 .book-spine{
@@ -170,7 +172,6 @@ nav{
   border-radius:4px 0 0 4px;
 }
 .book-price-tag{display:none;}
-.book-price-tag .currency{font-size:12px;letter-spacing:3px;opacity:0.8;}
 .book-info-strip{
   display:flex;gap:0;margin-top:24px;
   border:1px solid var(--cream-dark);border-radius:6px;overflow:hidden;
@@ -182,18 +183,6 @@ nav{
   border-right:1px solid var(--cream-dark);
 }
 .strip-item:last-child{border-right:none;}
-.strip-price-cell{
-  flex:1;text-align:center;padding:10px 8px;
-  background:var(--navy);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-}
-.strip-price-num{
-  font-family:'Noto Sans TC',sans-serif;
-  font-size:24px;font-weight:600;color:var(--white);
-  letter-spacing:1px;line-height:1.1;
-}
-.strip-price-num .currency{font-size:12px;letter-spacing:2px;opacity:0.8;margin-right:2px;}
-.strip-price-lbl{font-size:11px;color:rgba(255,255,255,0.55);letter-spacing:1px;margin-top:3px;}
 .strip-value{font-family:'Noto Sans TC',sans-serif;font-size:22px;font-weight:600;color:var(--gold);display:block;}
 .strip-label{font-size:11px;color:var(--text-light);letter-spacing:1px;}
 
@@ -201,17 +190,17 @@ nav{
 section{position:relative;z-index:1;}
 .section-inner{max-width:1100px;margin:0 auto;padding:96px 5%;}
 .section-eyebrow{
-  font-size:11px;letter-spacing:5px;color:var(--teal);
-  font-weight:500;text-transform:uppercase;margin-bottom:10px;
+  font-size:12px;letter-spacing:5px;color:var(--teal);
+  font-weight:600;text-transform:uppercase;margin-bottom:10px;
   display:flex;align-items:center;gap:10px;
 }
-.section-eyebrow::before{content:'';display:inline-block;width:22px;height:1px;background:var(--teal);}
+.section-eyebrow::before{content:'';display:inline-block;width:22px;height:2px;background:var(--teal);}
 .section-title{
   font-family:'Noto Serif TC',serif;
-  font-size:clamp(1.5rem,2.8vw,2.2rem);
-  font-weight:600;color:var(--brown);letter-spacing:4px;margin-bottom:12px;
+  font-size:clamp(1.6rem,3vw,2.4rem);
+  font-weight:700;color:var(--brown);letter-spacing:4px;margin-bottom:12px;
 }
-.section-subtitle{font-size:15px;color:var(--text-light);letter-spacing:1px;margin-bottom:52px;}
+.section-subtitle{font-size:16px;color:var(--text-light);letter-spacing:1px;margin-bottom:52px;}
 
 /* ─── FEATURES ─── */
 .features-bg{background:var(--white);border-top:1px solid var(--cream-dark);border-bottom:1px solid var(--cream-dark);}
@@ -223,7 +212,7 @@ section{position:relative;z-index:1;}
   overflow:hidden;
 }
 .feature-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
   background:linear-gradient(90deg,var(--gold),var(--gold-light));
   transform:scaleX(0);transform-origin:left;transition:transform 0.3s;
 }
@@ -232,16 +221,15 @@ section{position:relative;z-index:1;}
 .feature-num{
   font-family:'Playfair Display',serif;
   font-size:56px;font-weight:600;
-  color:rgba(139,109,63,0.25);
+  color:var(--gold); opacity: 0.3;
   line-height:1;margin-bottom:6px;display:block;
 }
 .feature-title{
   font-family:'Noto Serif TC',serif;
-  font-size:16px;font-weight:700;
+  font-size:17px;font-weight:700;
   color:var(--brown);letter-spacing:1.5px;
   margin-bottom:12px;line-height:1.6;
 }
-/* 日系齊行對齊 */
 .feature-desc{font-size:15px;color:var(--text-mid);line-height:1.9;text-align:justify;text-justify:inter-ideograph;}
 
 /* ─── CHAPTERS ─── */
@@ -251,15 +239,15 @@ section{position:relative;z-index:1;}
   border-radius:8px;overflow:hidden;
   box-shadow:0 4px 24px var(--shadow);
 }
-.chapters-table thead tr{background:linear-gradient(90deg,var(--gold),#9B7A4A);}
+.chapters-table thead tr{background:linear-gradient(90deg,var(--navy),#4a5c88);}
 .chapters-table thead th{
-  color:var(--white);font-size:13px;letter-spacing:2px;font-weight:500;
+  color:var(--white);font-size:14px;letter-spacing:2px;font-weight:500;
   padding:16px 22px;text-align:left;font-family:'Noto Sans TC',sans-serif;
 }
 .chapters-table tbody tr{background:var(--white);border-bottom:1px solid var(--cream-dark);transition:background 0.2s;}
-.chapters-table tbody tr:nth-child(even){background:var(--cream);}
+.chapters-table tbody tr:nth-child(even){background:var(--cream-mid);}
 .chapters-table tbody tr:hover{background:var(--gold-bg);}
-.chapters-table td{padding:18px 22px;font-size:15px;vertical-align:top;line-height:1.8;}
+.chapters-table td{padding:18px 22px;font-size:16px;vertical-align:top;line-height:1.8;}
 .chapters-table td:first-child{font-weight:600;color:var(--gold);font-family:'Noto Serif TC',serif;white-space:nowrap;width:190px;}
 .chapters-table td:nth-child(2){font-weight:600;color:var(--navy);width:210px;}
 .chapters-table td:last-child{color:var(--text-mid);text-align:justify;}
@@ -278,7 +266,7 @@ section{position:relative;z-index:1;}
   box-shadow:0 4px 20px var(--shadow);
   cursor:pointer;transition:all 0.35s;
 }
-.preview-card:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 20px 48px rgba(44,31,14,0.18);}
+.preview-card:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 20px 48px var(--shadow); border-color:var(--gold-pale);}
 .preview-thumb{
   width:100%;height:320px;object-fit:cover;
   object-position:center 8%;
@@ -293,34 +281,37 @@ section{position:relative;z-index:1;}
   content:"傳承的智慧　蕭旭峰地政士";
   position:absolute;top:50%;left:50%;
   transform:translate(-50%,-50%) rotate(-28deg);
-  font-size:13px;color:rgba(139,109,63,0.25);
+  font-size:12px;color:rgba(139,109,63,0.25);
   white-space:nowrap;letter-spacing:3px;
   font-family:"Noto Serif TC",serif;pointer-events:none;
 }
-.preview-label{padding:18px 20px;}
+.preview-label{padding:20px;}
 .preview-tag{
-  font-size:11px;letter-spacing:3px;color:var(--teal);font-weight:500;
-  margin-bottom:4px;
+  display:inline-block;
+  background:var(--teal); color:var(--white);
+  font-size:11px;letter-spacing:2px;font-weight:600;
+  padding:4px 10px; border-radius:3px;
+  margin-bottom:8px;
 }
-.preview-title{font-family:'Noto Serif TC',serif;font-size:16px;font-weight:600;color:var(--brown);letter-spacing:2px;}
+.preview-title{font-family:'Noto Serif TC',serif;font-size:16px;font-weight:700;color:var(--brown);letter-spacing:1px;}
 .preview-desc{font-size:14px;color:var(--text-light);margin-top:6px;line-height:1.8;text-align:justify;}
 
 /* lightbox */
 .lightbox-wm{
   position:absolute;inset:0;pointer-events:none;z-index:1002;
-  background:repeating-linear-gradient(-45deg,transparent 0,transparent 80px,rgba(255,255,255,0.04) 80px,rgba(255,255,255,0.04) 82px);
+  background:repeating-linear-gradient(-45deg,transparent 0,transparent 80px,rgba(255,255,255,0.05) 80px,rgba(255,255,255,0.05) 82px);
 }
 .lightbox-wm::after{
   content:"傳承的智慧　蕭旭峰地政士　版權所有";
   position:absolute;top:50%;left:50%;
   transform:translate(-50%,-50%) rotate(-28deg);
-  font-size:15px;color:rgba(255,255,255,0.12);
+  font-size:16px;color:rgba(255,255,255,0.2);
   white-space:nowrap;letter-spacing:4px;
   font-family:"Noto Serif TC",serif;pointer-events:none;
 }
 .lightbox{
   display:none;position:fixed;inset:0;z-index:999;
-  background:rgba(26,18,8,0.88);
+  background:rgba(26,18,8,0.9);
   align-items:center;justify-content:center;
   padding:20px;
 }
@@ -343,12 +334,12 @@ section{position:relative;z-index:1;}
 .lightbox-caption{
   padding:16px 24px;
   background:var(--cream);
-  font-size:14px;color:var(--text-mid);
+  font-size:15px;color:var(--text-mid);
   letter-spacing:1px;text-align:center;
   font-family:'Noto Serif TC',serif;
 }
 .preview-hint{
-  text-align:center;font-size:13px;color:var(--text-light);
+  text-align:center;font-size:14px;color:var(--text-light);
   letter-spacing:2px;margin-bottom:32px;margin-top:-20px;
 }
 
@@ -356,42 +347,34 @@ section{position:relative;z-index:1;}
 .author-bg{background:var(--white);border-top:1px solid var(--cream-dark);border-bottom:1px solid var(--cream-dark);}
 .author-layout{display:grid;grid-template-columns:260px 1fr;gap:64px;align-items:start;}
 .author-photo-wrap{position:relative;}
-.author-photo-placeholder{
-  width:100%;aspect-ratio:3/4;background:var(--cream-mid);
-  border-radius:8px;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  color:var(--text-light);font-size:13px;letter-spacing:1px;gap:10px;
-  border:2px dashed var(--gold-pale);
-}
 .author-frame{
   position:absolute;top:12px;left:12px;right:-12px;bottom:-12px;
-  border:1.5px solid var(--gold-pale);border-radius:8px;z-index:-1;
+  border:2px solid var(--gold-pale);border-radius:8px;z-index:-1;
 }
 .author-tag{
   position:absolute;bottom:-14px;left:20px;
   background:var(--gold);color:var(--white);
-  font-size:12px;letter-spacing:2px;padding:7px 18px;border-radius:3px;
+  font-size:13px;letter-spacing:2px;padding:7px 18px;border-radius:3px;
+  font-weight:600;
 }
-.author-name{font-family:'Noto Serif TC',serif;font-size:2.2rem;font-weight:600;color:var(--brown);letter-spacing:6px;margin-bottom:6px;}
-.author-title-line{font-size:14px;color:var(--teal);letter-spacing:2px;margin-bottom:28px;font-weight:500;}
+.author-name{font-family:'Noto Serif TC',serif;font-size:2.2rem;font-weight:700;color:var(--brown);letter-spacing:6px;margin-bottom:6px;}
+.author-title-line{font-size:15px;color:var(--teal);letter-spacing:2px;margin-bottom:28px;font-weight:600;}
 .author-bio{font-size:16px;color:var(--text-mid);line-height:2.1;margin-bottom:18px;text-align:justify;text-justify:inter-ideograph;}
 .author-bio-quote{
   margin-top:28px;padding:22px 26px;
-  background:var(--cream);border-left:3px solid var(--gold);
+  background:var(--cream);border-left:4px solid var(--gold);
   border-radius:0 8px 8px 0;
-  font-family:'Noto Serif TC',serif;font-size:15px;
+  font-family:'Noto Serif TC',serif;font-size:16px;
   color:var(--text-mid);line-height:2;font-style:italic;
 }
 .author-stats{display:flex;gap:28px;margin-top:28px;padding-top:24px;border-top:1px solid var(--cream-dark);}
 .astat-value{font-family:'Playfair Display',serif;font-size:32px;font-weight:600;color:var(--gold);line-height:1;display:block;}
-.astat-label{font-size:11px;color:var(--text-light);letter-spacing:2px;margin-top:3px;}
+.astat-label{font-size:12px;color:var(--text-light);letter-spacing:2px;margin-top:3px;}
 
 /* ─── ENDORSEMENTS ─── */
 .endorse-bg{background:var(--cream);}
-/* 強制設定為 3欄 x 2列 的網格 */
 .endorse-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:24px;}
 .endorse-card{
-  /* 設定相對定位，讓背景浮水印能被妥善包覆 */
   position:relative;
   z-index:1;
   background:var(--white);border-radius:8px;
@@ -399,13 +382,12 @@ section{position:relative;z-index:1;}
   transition:all 0.3s;
   overflow:hidden;
 }
-/* 以擬擬元素取代原本的 quote mark，設計成高質感的背景浮水印 */
 .endorse-card::before {
   content: "\201C";
   font-family: 'Playfair Display', serif;
   font-size: 160px;
   color: var(--gold-pale);
-  opacity: 0.2;
+  opacity: 0.25;
   position: absolute;
   top: -20px;
   right: 10px;
@@ -414,7 +396,6 @@ section{position:relative;z-index:1;}
   pointer-events: none;
 }
 .endorse-card:hover{box-shadow:0 8px 32px var(--shadow);border-color:var(--gold-pale);}
-/* 確保卡片內容在浮水印之上 */
 .endorse-header, .endorse-title, .endorse-preview, .endorse-toggle {
   position:relative; z-index: 1;
 }
@@ -425,10 +406,9 @@ section{position:relative;z-index:1;}
   font-family:'Noto Serif TC',serif;font-size:18px;font-weight:700;color:var(--gold);flex-shrink:0;
   border:1.5px solid var(--gold-pale);
 }
-.endorse-name{font-family:'Noto Serif TC',serif;font-weight:600;color:var(--brown);font-size:16px;}
-.endorse-role{font-size:12px;color:var(--text-light);letter-spacing:1px;}
-.endorse-title{font-size:13px;color:var(--teal);letter-spacing:1px;margin-bottom:12px;font-style:italic;}
-
+.endorse-name{font-family:'Noto Serif TC',serif;font-weight:700;color:var(--brown);font-size:16px;}
+.endorse-role{font-size:13px;color:var(--text-light);letter-spacing:1px;}
+.endorse-title{font-size:14px;color:var(--teal);letter-spacing:1px;margin-bottom:12px;font-weight:600;}
 .endorse-preview{
   font-size:15px;
   color:var(--text-mid);
@@ -438,85 +418,154 @@ section{position:relative;z-index:1;}
   text-align:justify;
   text-justify:inter-ideograph;
 }
-.endorse-preview.collapsed{max-height:90px;} /* 配合放大的字體與行距調整收合高度 */
+.endorse-preview.collapsed{max-height:90px;}
 .endorse-preview.expanded{max-height:800px;}
 .endorse-toggle{
-  margin-top:16px;font-size:12px;color:var(--teal);cursor:pointer;
+  margin-top:16px;font-size:13px;color:var(--teal);cursor:pointer;
   letter-spacing:2px;display:flex;align-items:center;gap:4px;
-  background:none;border:none;font-family:'Noto Sans TC',sans-serif;padding:0;
+  background:none;border:none;font-family:'Noto Sans TC',sans-serif;padding:0;font-weight:600;
 }
 .endorse-toggle:hover{color:var(--gold);}
 
 /* ─── PURCHASE ─── */
-.purchase-bg{
-  background:linear-gradient(135deg,#1A2A3E 0%,#2B3B6E 50%,#1E3040 100%);
+.purchase-bg {
+  background: linear-gradient(135deg,#1A2A3E 0%,#2B3B6E 50%,#1E3040 100%);
 }
-.purchase-inner{max-width:1100px;margin:0 auto;padding:64px 5%;}
-.purchase-split{display:grid;grid-template-columns:1fr 420px;gap:60px;align-items:center;}
-.purchase-left{text-align:left; padding-right: 20px;}
-.purchase-eyebrow{font-size:11px;letter-spacing:5px;color:var(--gold-light);margin-bottom:12px;}
-/* 縮小標題字級、減輕字重，創造精緻緊湊感 */
-.purchase-title{
-  font-family:'Noto Serif TC',serif;
-  font-size:clamp(1.2rem,2.2vw,1.7rem);
-  font-weight:400; 
-  color:#FFFDF5;letter-spacing:3px;line-height:1.5;margin-bottom:12px;
+.purchase-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 5%;
 }
-.purchase-subtitle{font-size:14px;color:rgba(255,255,255,0.7);letter-spacing:1px;margin-bottom:0;line-height:2;}
+/* 將右側卡片區塊寬度從 440px 縮小至 380px，給左側文字更多空間 */
+.purchase-split {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 60px;
+  align-items: center;
+}
+.purchase-left {
+  text-align: left; 
+  padding-right: 0;
+}
+.purchase-eyebrow {
+  font-size: 13px;
+  letter-spacing: 5px;
+  color: var(--gold-light);
+  margin-bottom: 14px; 
+  font-weight: 600;
+}
+.purchase-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(1.5rem, 2.5vw, 1.8rem); /* 微調字級配合不斷字長句 */
+  font-weight: 400; 
+  color: var(--white);
+  letter-spacing: 2px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.purchase-subtitle {
+  font-size: 16px;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 1px;
+  margin-bottom: 0;
+  line-height: 2;
+}
 
-.purchase-cards-container {
+/* 整合式票券卡片主體 */
+.purchase-card-unified {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(26, 42, 62, 0.4);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
-.purchase-card-specs {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 14px;
-  padding: 24px 28px;
-  text-align: center;
+
+/* 上半部：規格區域 */
+.purchase-specs-area {
+  padding: 28px 24px 20px;
+  background: var(--cream);
 }
 .purchase-specs {
   display: flex;
   justify-content: center;
-  gap: 16px;
-  flex-wrap: nowrap;
+  gap: 16px 20px; /* 支援折行時的上下與左右間距 */
+  flex-wrap: wrap; /* 允許折行，解決 ISBN 被截斷的問題 */
 }
-.purchase-spec{text-align:center;color:rgba(255,255,255,0.6);font-size:12px;letter-spacing:0.5px;white-space:nowrap;}
-.purchase-spec-value{display:block;color:#FFFDF5;font-size:14px;font-weight:500;margin-bottom:2px;font-family:'Noto Sans TC', sans-serif;white-space:nowrap;}
-
-.purchase-card-price {
-  background: var(--gold);
-  border: 1px solid var(--gold-light);
-  border-radius: 14px;
-  padding: 32px 28px 24px;
+.purchase-spec {
   text-align: center;
-  box-shadow: 0 8px 32px rgba(139,109,63,0.3);
+  color: var(--text-mid);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
 }
-.purchase-price-label{font-size:13px;color:rgba(255,255,255,0.8);letter-spacing:2px;margin-bottom:8px;}
+.purchase-spec-value {
+  display: block;
+  color: var(--text-dark);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-family: 'Noto Sans TC', sans-serif;
+}
 
-/* 價格字體統一改為無襯線字體 Noto Sans TC，並將字級微縮以顯精緻 */
+/* 精緻虛線分隔 */
+.purchase-divider {
+  height: 1px;
+  background: repeating-linear-gradient(to right, var(--cream-dark) 0, var(--cream-dark) 6px, transparent 6px, transparent 12px);
+  margin: 0 24px;
+  opacity: 0.8;
+}
+
+/* 下半部：價格與按鈕 */
+.purchase-price-area {
+  padding: 24px 24px 32px;
+  text-align: center;
+  background: var(--white);
+}
+.purchase-price-label {
+  font-size: 12px;
+  color: var(--text-light);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
 .purchase-price {
   font-family: 'Noto Sans TC', sans-serif;
-  font-size: 52px;
+  font-size: 48px; /* 配合卡片縮小，將數字比例調降 */
   font-weight: 700;
-  color: var(--white);
+  color: var(--gold);
   line-height: 1;
   margin-bottom: 24px;
 }
-
-.btn-buy{
-  display:inline-flex;align-items:center;gap:12px;
+.btn-buy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 260px;
   background: var(--navy);
   color: var(--white);
-  padding:16px 48px;border-radius:5px;
-  text-decoration:none;font-size:16px;letter-spacing:4px;font-weight:500;
-  transition:all 0.3s;
-  box-shadow:0 8px 28px rgba(43,59,110,0.4);
+  padding: 14px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 15px;
+  letter-spacing: 3px;
+  font-weight: 600;
+  transition: all 0.3s;
+  box-shadow: 0 8px 24px rgba(43,59,110,0.3);
 }
-.btn-buy:hover{background:var(--navy-light);transform:translateY(-3px);box-shadow:0 16px 44px rgba(43,59,110,0.5);}
-.purchase-note{font-size:12px;color:rgba(255,255,255,0.7);letter-spacing:2px;margin-top:18px;}
-
+.btn-buy:hover {
+  background: var(--navy-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(43,59,110,0.4);
+}
+.purchase-note {
+  font-size: 11px;
+  color: var(--text-light);
+  letter-spacing: 1px;
+  margin-top: 16px;
+}
 
 /* ─── CONTACT ─── */
 .contact-bg{background:var(--white);border-top:1px solid var(--cream-dark);}
@@ -529,12 +578,10 @@ section{position:relative;z-index:1;}
 }
 .contact-detail-label{font-size:11px;letter-spacing:2px;color:var(--text-light);margin-bottom:3px;}
 .contact-detail-value{font-size:15px;color:var(--brown);font-weight:500;}
-
-/* 官方網站超連結精緻底線樣式 */
 .contact-link {
-  color: var(--brown);
+  color: var(--teal);
   text-decoration: none;
-  border-bottom: 1px solid var(--gold-pale);
+  border-bottom: 2px solid var(--gold-pale);
   padding-bottom: 2px;
   transition: all 0.3s ease;
 }
@@ -544,7 +591,7 @@ section{position:relative;z-index:1;}
 }
 
 .form-group{margin-bottom:20px;}
-.form-label{display:block;font-size:12px;letter-spacing:2px;color:var(--text-light);margin-bottom:8px;}
+.form-label{display:block;font-size:12px;letter-spacing:2px;color:var(--text-light);margin-bottom:8px;font-weight:500;}
 .form-input,.form-select,.form-textarea{
   width:100%;padding:14px 16px;
   background:var(--cream);border:1.5px solid var(--cream-dark);
@@ -556,11 +603,11 @@ section{position:relative;z-index:1;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .btn-submit{
   width:100%;padding:16px;background:var(--navy);color:var(--white);
-  border:none;border-radius:5px;font-size:15px;letter-spacing:3px;
-  font-family:'Noto Sans TC',sans-serif;cursor:pointer;transition:all 0.3s;margin-top:8px;
+  border:none;border-radius:5px;font-size:16px;letter-spacing:3px;
+  font-family:'Noto Sans TC',sans-serif;cursor:pointer;transition:all 0.3s;margin-top:8px;font-weight:600;
 }
 .btn-submit:hover{background:var(--navy-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(43,59,110,0.3);}
-.form-success{display:none;text-align:center;padding:40px;color:var(--teal);font-size:15px;letter-spacing:1px;}
+.form-success{display:none;text-align:center;padding:40px;color:var(--teal);font-size:16px;letter-spacing:1px;font-weight:600;}
 
 /* ─── FOOTER ─── */
 footer{background:var(--brown);padding:64px 8% 36px;color:rgba(255,255,255,0.45);}
@@ -571,16 +618,14 @@ footer{background:var(--brown);padding:64px 8% 36px;color:rgba(255,255,255,0.45)
 }
 .footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
 .footer-logo-img{
-  /* 適度放大 Logo */
   height:46px;
   object-fit:contain;
   filter: brightness(0) invert(0.8);
   opacity:0.7;
 }
-.footer-name{font-family:'Noto Serif TC',serif;font-size:15px;color:#FFFDF5;letter-spacing:2px;}
-.footer-tagline{font-size:12px;letter-spacing:2px;color:rgba(255,255,255,0.35);margin-top:2px;}
-/* 放大出版資訊與間距 */
-.footer-isbn{font-size:13px;letter-spacing:1px;text-align:right;}
+.footer-name{font-family:'Noto Serif TC',serif;font-size:16px;color:#FFFDF5;letter-spacing:2px;font-weight:700;}
+.footer-tagline{font-size:13px;letter-spacing:2px;color:rgba(255,255,255,0.35);margin-top:2px;}
+.footer-isbn{font-size:14px;letter-spacing:1px;text-align:right;}
 .footer-isbn span{display:block;color:rgba(255,255,255,0.5);margin-top:6px;}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
 
@@ -598,13 +643,12 @@ footer{background:var(--brown);padding:64px 8% 36px;color:rgba(255,255,255,0.45)
   .hero-book{order:1;}
   .hero-eyebrow,.hero-cta{justify-content:center;}
   .hero-title{white-space:normal;}
-  .hero-tagline{border-left:none;border-top:2px solid var(--gold-pale);padding:14px 0 0;}
+  .hero-tagline{border-left:none;border-top:4px solid var(--gold-pale);padding:14px 0 0;}
   .purchase-split{grid-template-columns:1fr !important;}
   .purchase-left{text-align:center !important; padding-right: 0;}
   .hero-meta{justify-content:center;}
   .features-grid{grid-template-columns:1fr 1fr;}
   .preview-grid{grid-template-columns:1fr 1fr;}
-  /* 平板縮放為 2欄網格 */
   .endorse-grid{grid-template-columns:1fr 1fr;}
   .author-layout{grid-template-columns:1fr;}
   .author-photo-wrap{max-width:220px;margin:0 auto;}
@@ -616,7 +660,6 @@ footer{background:var(--brown);padding:64px 8% 36px;color:rgba(255,255,255,0.45)
 @media(max-width:600px){
   .features-grid{grid-template-columns:1fr;}
   .preview-grid{grid-template-columns:1fr;}
-  /* 手機縮放為 1欄網格 */
   .endorse-grid{grid-template-columns:1fr;}
   .form-row{grid-template-columns:1fr;}
   .chapters-table thead th:last-child,.chapters-table td:last-child{display:none;}
